@@ -1,5 +1,8 @@
 package com.sph.hyu.mqtt.subscriber.roller;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,9 +14,9 @@ public class TrackingRollerHistoryDto {
 
 	//private long seq;
 	private String trackingId ;		//Tracking 아이디
-	private String prjId ;			//프로젝트 아이디
+	private UUID prjId ;			//프로젝트 아이디
 	private String userId ;			//사용자 아이디
-	private String assetId ;		//차량번호
+	private UUID assetId ;		//차량번호
 	private String assetNm ;		//트럭명 ( 차량번호 입력 )
 	private String gpsType = "MQTT";			//GPS 수신 타입 (MOBILE : 핸드폰 GPS, SINGLE : 외부 장비 싱글 GPS, DUAL : 외부 장비 듀얼 GPS)
 	@JsonProperty("rlr_drm_lttd")
@@ -37,14 +40,14 @@ public class TrackingRollerHistoryDto {
 	private String pathId ;			//순환경로 아이디
 	private String destinationId ;	//순환경로 목적지 아이디
 	@JsonProperty("rlr_timestamp")
-	private String eventDt ;		//모바일 GPS 전송 시간
+	private LocalDateTime eventDt ;		//모바일 GPS 전송 시간
 	@JsonProperty("TimeStamp")
-	private String gpsDt ;			//GPS 생성시간
+	private LocalDateTime gpsDt ;			//GPS 생성시간
 	private int status=1;	//1:connected(정상동작) 2:stop(일정시간 위치데이터 못받아옴) 3:disconnected(연결안됨)
 	@JsonProperty("rlr_drm_x_pose")
-	private String roll;
+	private double roll;
 	@JsonProperty("rlr_drm_y_pose")
-	private String pitch;
+	private double pitch;
 
 	/*
 	 @Override
